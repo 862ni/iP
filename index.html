@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iP quality</title>
+<style>
+:root{--bg1:#0b0b16;--bg2:#1a1030;--card:rgba(255,255,255,.07);--bd:rgba(255,255,255,.12);--tx:#f5f5fb;--mut:#a3a3bd;--a:#7c5cff;--b:#00d4ff;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg1:#f4f5fb;--bg2:#e6e9ff;--card:rgba(255,255,255,.8);--bd:rgba(0,0,0,.08);--tx:#17172a;--mut:#62627a;--a:#6a4cff;--b:#00a6d6;color-scheme:light}
+:root[data-theme="sunset"]{--bg1:#1c0b14;--bg2:#3a1424;--a:#ff5e62;--b:#ff9966}
+:root[data-theme="ocean"]{--bg1:#04161f;--bg2:#08303f;--a:#00b4d8;--b:#4ade80}
+:root[data-theme="gold"]{--bg1:#15110a;--bg2:#2a2010;--a:#f5b301;--b:#ff7a18}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;min-height:100vh}
+.wrap{max-width:520px;margin:0 auto;padding:16px 16px 40px}
+.top{display:flex;align-items:center;justify-content:space-between;margin:6px 0 18px}
+.brand{display:flex;align-items:center;gap:10px;direction:ltr}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.bn{font-size:22px;font-weight:800;letter-spacing:.3px}.bn span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.dots{display:flex;gap:7px}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+.dot.on{border-color:var(--tx);transform:scale(1.15)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px;margin-bottom:14px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.step{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;margin-bottom:12px}
+.step b{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;display:grid;place-items:center;font-size:13px}
+.drop{display:block;border:2px dashed var(--bd);border-radius:16px;padding:26px 10px;text-align:center;cursor:pointer;color:var(--mut)}
+.drop big{display:block;font-size:34px;margin-bottom:6px}
+.drop input{display:none}
+.seg{display:flex;background:rgba(127,127,160,.15);border-radius:14px;padding:4px;gap:4px}
+.seg div{flex:1;text-align:center;padding:11px 4px;border-radius:11px;cursor:pointer;font-weight:600;color:var(--mut)}
+.seg div.on{background:linear-gradient(135deg,var(--a),var(--b));color:#fff}
+.lb{font-size:13px;color:var(--mut);margin:12px 0 7px}.lb:first-child{margin-top:0}
+video{width:100%;border-radius:14px;background:#000;max-height:46vh;display:block}
+.bar{height:8px;border-radius:6px;background:rgba(127,127,160,.2);overflow:hidden;margin:12px 0 6px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .2s}
+.note{font-size:13px;color:var(--mut);line-height:1.7;margin:6px 0}
+.btn{width:100%;padding:16px;border:0;border-radius:16px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-size:18px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3);margin-top:10px}
+.btn.alt{background:rgba(127,127,160,.2);box-shadow:none;color:var(--tx);font-size:16px}
+.btn:disabled{opacity:.45}
+#lock{position:fixed;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(160deg,var(--bg1),var(--bg2))}
+#lock .card{width:100%;max-width:340px;text-align:center}
+#lock .logo{margin:0 auto 12px;width:64px;height:64px;font-size:26px;border-radius:20px}
+input[type=password]{width:100%;padding:15px;border-radius:14px;border:1px solid var(--bd);background:rgba(127,127,160,.15);color:var(--tx);font-size:22px;text-align:center;letter-spacing:6px;margin-top:10px}
+.err{color:#ff6b81;height:20px;font-size:14px;margin:8px 0}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div id="lock"><div class="card">
+<div class="logo">iP</div>
+<div class="bn" style="direction:ltr">iP <span>quality</span></div>
+<p class="note">أدخل الرمز للدخول</p>
+<input id="pw" type="password" inputmode="numeric" autocomplete="off" placeholder="••••••">
+<div class="err" id="err"></div>
+<button class="btn" id="go" style="margin-top:0">دخول</button>
+</div></div>
+
+<div class="wrap">
+<div class="top">
+ <div class="brand"><div class="logo">iP</div><div class="bn">iP <span>quality</span></div></div>
+ <div class="dots" id="themes">
+  <div class="dot" data-v="dark" style="background:#7c5cff"></div>
+  <div class="dot" data-v="light" style="background:#e9ecff"></div>
+  <div class="dot" data-v="sunset" style="background:#ff5e62"></div>
+  <div class="dot" data-v="ocean" style="background:#00b4d8"></div>
+  <div class="dot" data-v="gold" style="background:#f5b301"></div>
+ </div>
+</div>
+
+<div class="card"><div class="step"><b>1</b>اختر الفيديو</div>
+<label class="drop"><big>📹</big>اضغط هنا لاختيار فيديو<input type="file" id="file" accept="video/*"></label></div>
+
+<div class="card"><div class="step"><b>2</b>الإعدادات</div>
+<div class="lb">الفريمات</div>
+<div class="seg" id="fps"><div data-v="30">30</div><div class="on" data-v="60">60</div><div data-v="120">120</div></div>
+<div class="lb">الدقة</div>
+<div class="seg" id="res"><div class="on" data-v="1080">1080p</div><div data-v="2160">4K</div></div>
+</div>
+
+<div class="card"><div class="step"><b>3</b>الترميز</div>
+<video id="pv" playsinline preload="auto"></video>
+<div class="bar"><i id="pb"></i></div>
+<div class="note" id="st">اختر فيديو للبدء.</div>
+<button class="btn" id="start" disabled>ابدأ إعادة الترميز</button></div>
+
+<div class="card hide" id="out"><div class="step"><b>✓</b>جاهز</div>
+<video id="rv" controls playsinline></video>
+<button class="btn" id="save">💾 حفظ الفيديو</button>
+<button class="btn alt" id="share">📲 حفظ في الصور / مشاركة</button>
+<div class="note" id="sv"></div></div>
+
+<p class="note">المعالجة تأخذ نفس مدة الفيديو. لا تقفل الشاشة ولا تطلع من الصفحة أثناءها.</p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+function tryUnlock(){if($('pw').value==='123123'){$('lock').classList.add('hide')}else{$('err').textContent='الرمز غلط';$('pw').value=''}}
+$('go').onclick=tryUnlock;$('pw').onkeydown=e=>{if(e.key==='Enter')tryUnlock()};
+
+function setTheme(v){document.documentElement.setAttribute('data-theme',v);document.querySelectorAll('#themes .dot').forEach(c=>c.classList.toggle('on',c.dataset.v===v));try{localStorage.setItem('ipq-theme',v)}catch(e){}}
+let th='dark';try{th=localStorage.getItem('ipq-theme')||'dark'}catch(e){}
+setTheme(th);
+document.querySelectorAll('#themes .dot').forEach(c=>c.onclick=()=>setTheme(c.dataset.v));
+
+let fps=60,res=1080;
+function pick(id,cb){document.querySelectorAll('#'+id+' div').forEach(c=>c.onclick=()=>{document.querySelectorAll('#'+id+' div').forEach(x=>x.classList.remove('on'));c.classList.add('on');cb(+c.dataset.v)})}
+pick('fps',v=>fps=v);pick('res',v=>res=v);
+
+const pv=$('pv');let ac=null,srcNode=null,busy=false,outBlob=null,outUrl='',outExt='mp4';
+$('file').onchange=e=>{const f=e.target.files[0];if(!f)return;$('st').textContent='جاري تحميل الفيديو...';pv.src=URL.createObjectURL(f);pv.load();pv.onloadedmetadata=()=>{$('start').disabled=false;$('st').textContent='جاهز: '+pv.videoWidth+'×'+pv.videoHeight+' — '+Math.round(pv.duration)+' ثانية'}};
+
+function mime(){const l=['video/mp4;codecs=avc1.640033,mp4a.40.2','video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9,opus','video/webm'];return l.find(m=>window.MediaRecorder&&MediaRecorder.isTypeSupported(m))||''}
+function fail(m){$('st').textContent=m;busy=false;$('start').disabled=false}
+
+$('start').onclick=()=>{
+ if(busy)return;
+ if(!window.MediaRecorder){fail('المتصفح ما يدعم التسجيل. جرب Safari.');return}
+ busy=true;$('start').disabled=true;$('out').classList.add('hide');
+ const vw=pv.videoWidth,vh=pv.videoHeight,s=res/Math.min(vw,vh);
+ const W=Math.round(vw*s/2)*2,H=Math.round(vh*s/2)*2;
+ const cv=document.createElement('canvas');cv.width=W;cv.height=H;
+ const cx=cv.getContext('2d');cx.imageSmoothingQuality='high';
+ const stream=cv.captureStream(fps);
+ try{
+  if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();srcNode=ac.createMediaElementSource(pv)}
+  ac.resume();
+  const d=ac.createMediaStreamDestination();srcNode.disconnect();srcNode.connect(d);
+  d.stream.getAudioTracks().forEach(tk=>stream.addTrack(tk));
+ }catch(e){}
+ const bps=Math.min(100e6,Math.max(12e6,W*H*fps*0.12));
+ const mt=mime();let rec;
+ try{rec=new MediaRecorder(stream,{mimeType:mt||undefined,videoBitsPerSecond:bps,audioBitsPerSecond:256000})}
+ catch(e){try{rec=new MediaRecorder(stream)}catch(e2){fail('الجهاز ما يقدر يسجل بهالدقة، جرب 1080p.');return}}
+ const chunks=[];let raf;
+ rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+ rec.onerror=()=>{cancelAnimationFrame(raf);fail('صار خطأ أثناء التسجيل، جرب إعدادات أقل.')};
+ rec.onstop=()=>{
+  cancelAnimationFrame(raf);
+  if(!chunks.length){fail('ما طلع ناتج، جرب إعدادات أقل.');return}
+  outBlob=new Blob(chunks,{type:rec.mimeType||'video/mp4'});
+  outExt=outBlob.type.includes('webm')?'webm':'mp4';
+  if(outUrl)URL.revokeObjectURL(outUrl);
+  outUrl=URL.createObjectURL(outBlob);$('rv').src=outUrl;
+  $('out').classList.remove('hide');$('sv').textContent='';
+  $('st').textContent='تم ✅ '+W+'×'+H+' @'+fps+'fps';
+  $('pb').style.width='100%';busy=false;$('start').disabled=false;
+  $('out').scrollIntoView({behavior:'smooth'});
+ };
+ const draw=()=>{cx.drawImage(pv,0,0,W,H);$('pb').style.width=(pv.currentTime/pv.duration*100)+'%';raf=requestAnimationFrame(draw)};
+ pv.onended=()=>{cx.drawImage(pv,0,0,W,H);setTimeout(()=>{if(rec.state!=='inactive')rec.stop()},300)};
+ const go=()=>{
+  rec.start(500);
+  const p=pv.play();
+  if(p&&p.catch)p.catch(()=>{if(rec.state!=='inactive')rec.stop();fail('ما قدر يشغل الفيديو، اضغط مرة ثانية.')});
+  $('st').textContent='جاري المعالجة... لا تطلع من الصفحة';
+  draw();
+ };
+ if(pv.currentTime>0){pv.onseeked=()=>{pv.onseeked=null;go()};pv.currentTime=0}else go();
+};
+
+$('save').onclick=()=>{
+ if(!outBlob)return;
+ const a=document.createElement('a');a.href=outUrl;a.download='iPquality-'+Date.now()+'.'+outExt;
+ document.body.appendChild(a);a.click();a.remove();
+ $('sv').textContent='إذا ما نزل الفيديو، اضغط زر "حفظ في الصور / مشاركة" واختر "حفظ الفيديو".';
+};
+$('share').onclick=async()=>{
+ if(!outBlob)return;
+ const f=new File([outBlob],'iPquality.'+outExt,{type:outBlob.type});
+ try{
+  if(navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f]});
+  else $('sv').textContent='المشاركة غير مدعومة هنا. اضغط مطولاً على الفيديو واحفظه.';
+ }catch(e){}
+};
+</script>
+</body>
+</html>
